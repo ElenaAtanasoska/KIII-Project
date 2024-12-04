@@ -16,5 +16,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     //List<Student> findStudentsByCoursesContainingAndStartDateBefore(Course course, LocalDate date);
     List<Student> findStudentsByCoursesContainingAndStartDateBetween(Course course, LocalDate startDate, LocalDate endDate);
 
-    Student findByEmail(String username);
+    Student findByEmail(String email);
 }

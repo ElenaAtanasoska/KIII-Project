@@ -1,4 +1,4 @@
-package mk.ukim.finki.kiii.kiiiproject.model.config;
+package mk.ukim.finki.kiii.kiiiproject.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

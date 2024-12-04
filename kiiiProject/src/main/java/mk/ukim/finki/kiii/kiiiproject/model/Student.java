@@ -11,6 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
+@Table(name = "student")
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student {
@@ -18,7 +19,9 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String fullName;
+    @Column(name = "email", unique = true)
     private String email;
+    @Column(name = "password")
     private String password;
     private LocalDate startDate;
 

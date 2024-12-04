@@ -94,8 +94,8 @@ public class StudentServiceImpl implements StudentService, UserDetailsService {
 
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Student student = studentRepository.findByEmail(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Student student = studentRepository.findByEmail(email);
         return new User(
                 student.getEmail(),
                 passwordEncoder.encode(student.getPassword()),
