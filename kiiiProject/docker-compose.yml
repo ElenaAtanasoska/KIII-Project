@@ -15,6 +15,7 @@ services:
       - student-postgres-data:/var/lib/postgresql/data
       - ./db/init:/docker-entrypoint-initdb.d
       - ./custom-entrypoint.sh:/usr/local/bin/custom-entrypoint.sh
+    entrypoint: ["bash", "/usr/local/bin/custom-entrypoint.sh"]
     networks:
       - students-network
 
