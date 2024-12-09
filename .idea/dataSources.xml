@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="KIIIProjectDB@localhost" uuid="b00bf37d-21e1-474c-a076-ed363f0e2206">
+    <data-source source="LOCAL" name="KIIIProjectDB@localhost" uuid="2c3e2e79-aa03-4142-94d8-c3c6ea970127">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/KIIIProjectDB</jdbc-url>
       <jdbc-additional-properties>

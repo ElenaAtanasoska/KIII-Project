@@ -11,12 +11,12 @@ until pg_isready -h localhost -p 5432 -U postgres; do
 done
 
 # Run the custom initialization script only if the database is empty
-if psql -U postgres -d employeeDB -c '\dt' | grep -q 'No relations found.'; then
+if psql -U postgres -d KIIIProjectDB -c '\dt' | grep -q 'No relations found.'; then
   echo "Initializing database..."
-  psql -U postgres -d employeeDB -f /docker-entrypoint-initdb.d/init.sql
+  psql -U postgres -d KIIIProjectDB -f /docker-entrypoint-initdb.d/init.sql
 else
   echo "Database already initialized."
-  psql -U postgres -d employeeDB -f /docker-entrypoint-initdb.d/init.sql
+  psql -U postgres -d KIIIProjectDB -f /docker-entrypoint-initdb.d/init.sql
 fi
 
 # Keep the container running
