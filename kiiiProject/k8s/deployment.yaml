@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: student-app-conf
+  namespace: kiii
+data:
+  SPRING_DATASOURCE_URL: jdbc:postgresql://kiii-postgres-service:5432/KIIIProjectDB
+#  POSTGRES_DATABASE: KIIIProjectDB
+  SPRING_DATASOURCE_USERNAME: postgres
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: student-app-secret
+  namespace: kiii
+type: Opaque
+data:
+  POSTGRES_PASSWORD: ZWxlbmE=
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-app-deployment
+  namespace: kiii
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: studentapp
+  template:
+    metadata:
+      labels:
+        app: studentapp
+    spec:
+      containers:
+        - name: student-app-container
+          image: atanasoska/kiii-project:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+            requests:
+              memory: "256Mi"  # Memory request
+              cpu: "500m"      # CPU request
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: student-app-conf
+          env:
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: student-app-secret
+                  key: POSTGRES_PASSWORD
